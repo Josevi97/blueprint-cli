@@ -7,5 +7,5 @@ import (
 )
 
 func main() {
-	process_manager.FromArgs(os.Args[1:])
+	process_manager.FromArgs(os.Args[1:]).Execute()
 }
