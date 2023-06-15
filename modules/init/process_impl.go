@@ -1,4 +1,4 @@
-package init_process
+package InitProcess
 
 import "github.com/josevi97/core/logging"
 

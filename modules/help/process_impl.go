@@ -1,4 +1,4 @@
-package help_process
+package HelpProcess
 
 import (
 	"github.com/josevi97/core/logging"

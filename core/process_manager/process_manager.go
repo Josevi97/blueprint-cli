@@ -1,49 +1,42 @@
-package process_manager
+package ProcessManager
 
 import (
 	"strings"
 
 	"github.com/josevi97/core/logging"
-	help_process "github.com/josevi97/src/modules/help"
-	init_process "github.com/josevi97/src/modules/init"
+	HelpProcess "github.com/josevi97/modules/help"
+	InitProcess "github.com/josevi97/modules/init"
+	ArgsUtils "github.com/josevi97/utils"
 )
 
 var Log logging.Logging = logging.NewLogging("PROCESS MANAGER")
 
-func getProcessArgs(args []string) []string {
-	if len(args) == 1 {
-		return []string{}
-	}
-
-	return args[1:]
-}
-
 func getProcesses(args []string) map[string]func() Process {
-	processArgs := getProcessArgs(args)
+	processArgs := ArgsUtils.GetNextArgs(1, args)
 
 	return map[string]func() Process{
 		"init": func() Process {
-			return init_process.NewInitProcess(processArgs)
+			return InitProcess.NewInitProcess(processArgs)
 		},
 		"help": func() Process {
-			return help_process.NewHelpProcess()
+			return HelpProcess.NewHelpProcess()
 		},
 	}
 }
 
 func getProcessFromArgs(args []string) Process {
-	if args == nil || len(args) == 0 {
-		return help_process.NewHelpProcess()
-	}
-
 	processes := getProcesses(args)
-	process, found := processes[args[0]]
+	defaultProcess := processes["help"]
 
-	if !found {
-		return processes["help"]()
+	if args == nil || len(args) == 0 {
+		return defaultProcess()
 	}
 
-	return process()
+	if process, found := processes[args[0]]; found {
+		return process()
+	}
+
+	return defaultProcess()
 }
 
 func FromArgs(args []string) Process {
