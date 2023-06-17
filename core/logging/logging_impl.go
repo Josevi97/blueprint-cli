@@ -12,6 +12,9 @@ type LoggingImpl struct {
 }
 
 func (logging *LoggingImpl) write(logger log.Logger, msg string, args ...any) {
+	// This should be the way
+	// if (!initialized) return
+
 	logger.Printf(msg+"\n", args...)
 }
 
@@ -28,6 +31,11 @@ func (logging *LoggingImpl) Error(msg string, args ...any) {
 }
 
 func NewLogging(prefix string) Logging {
+	// Another way is to avoid the output if not initialized
+	// if (!initialized) {
+	// 	soutput := none
+	// }
+
 	outputLog := log.New(os.Stdout, "", 0)
 	infoLog := log.New(os.Stdout, "["+prefix+"] - ", log.Ldate|log.Ltime|log.Lmsgprefix)
 	errorLog := log.New(os.Stderr, "["+prefix+"] - Error: ", log.Ldate|log.Ltime|log.Lmsgprefix|log.Llongfile)
