@@ -10,7 +10,7 @@ import (
 	ArrayUtils "github.com/josevi97/utils/array"
 )
 
-var Log logging.Logging = logging.NewLogging("PROCESS MANAGER")
+var Log = logging.NewLogging("PROCESS MANAGER")
 
 func getProcesses(args []string) map[string]func() process.Process {
 	processArgs := ArrayUtils.SublistFrom(args, 1)

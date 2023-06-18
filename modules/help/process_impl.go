@@ -7,7 +7,7 @@ import (
 
 type HelpProcess struct{}
 
-var Log logging.Logging = logging.NewLogging("HELP PROCESS")
+var Log = logging.NewLogging("HELP PROCESS")
 
 func commandHelp(command string, msg string) {
 	Log.Output("%s\t%s", command, msg)

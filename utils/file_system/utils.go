@@ -6,8 +6,6 @@ import (
 	"strings"
 )
 
-const DIRECTORY_NAME = ".blueprint"
-
 func Join(data ...string) string {
 	return strings.Join(data, "/")
 }

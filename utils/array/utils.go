@@ -13,5 +13,9 @@ func Sublist(array []string, from int, to int) []string {
 		return []string{}
 	}
 
+	// if from > to {
+	// 		// should panic
+	// }
+
 	return array[from:to]
 }
