@@ -5,6 +5,14 @@ import (
 	"os"
 )
 
+const (
+	colorReset  = "\033[0m"
+	colorRed    = "\033[31m"
+	colorGreen  = "\033[32m"
+	colorOrange = "\033[33m"
+	colorCyan   = "\033[36m"
+)
+
 type LoggingImpl struct {
 	outputLog *log.Logger
 	infoLog   *log.Logger
@@ -23,11 +31,11 @@ func (logging *LoggingImpl) Output(msg string, args ...any) {
 }
 
 func (logging *LoggingImpl) Info(msg string, args ...any) {
-	logging.write(*logging.infoLog, msg, args...)
+	logging.write(*logging.infoLog, colorCyan+msg+colorReset, args...)
 }
 
 func (logging *LoggingImpl) Error(msg string, args ...any) {
-	logging.write(*logging.errorLog, msg, args...)
+	logging.write(*logging.errorLog, colorRed+"Error: "+msg+colorReset, args...)
 }
 
 func NewLogging(prefix string) Logging {
@@ -37,8 +45,8 @@ func NewLogging(prefix string) Logging {
 	// }
 
 	outputLog := log.New(os.Stdout, "", 0)
-	infoLog := log.New(os.Stdout, "["+prefix+"] - ", log.Ldate|log.Ltime|log.Lmsgprefix)
-	errorLog := log.New(os.Stderr, "["+prefix+"] - Error: ", log.Ldate|log.Ltime|log.Lmsgprefix|log.Llongfile)
+	infoLog := log.New(os.Stdout, colorOrange+"["+prefix+"] "+colorReset, log.LstdFlags|log.Lmsgprefix)
+	errorLog := log.New(os.Stderr, colorOrange+"["+prefix+"] "+colorReset, log.LstdFlags|log.Lmsgprefix|log.Llongfile)
 
 	return &LoggingImpl{
 		outputLog: outputLog,

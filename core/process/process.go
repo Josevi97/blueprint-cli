@@ -5,6 +5,7 @@ var (
 	HELP      = "help"
 	REGISTER  = "register"
 	GENERATE  = "generate"
+	LIST      = "list"
 	BLUEPRINT = "blueprint"
 )
 
