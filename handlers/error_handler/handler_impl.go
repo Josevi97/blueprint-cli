@@ -16,6 +16,9 @@ var errorDecider = map[uint]func(){
 		Log.Error("could not initialize bluepint; could not create directory")
 		Log.Output("blueprint is already initialized")
 	},
+	error.DATABASE_INITIALIZATION: func() {
+		Log.Error("could not initialize the database")
+	},
 }
 
 func ErrorRecover() {

@@ -26,10 +26,10 @@ func (init *InitProcess) fileSystem() {
 }
 
 func (init *InitProcess) database() {
-	isInitialized := DatabaseManager.Init(init.pathname)
+	err := DatabaseManager.Init(init.pathname)
 
-	if !isInitialized {
-		Log.Error("could not initialize the database")
+	if ErrorUtils.IsError(err) {
+		ErrorUtils.Throw(err)
 	}
 }
 
