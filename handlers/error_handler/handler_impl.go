@@ -21,6 +21,10 @@ var errorDecider = map[uint]func(){
 func ErrorRecover() {
 	var err interface{} = recover()
 
+	if err == nil {
+		return
+	}
+
 	if key, ok := err.(uint); ok {
 		errorDecider[key]()
 	} else {
