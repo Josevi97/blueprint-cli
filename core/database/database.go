@@ -8,7 +8,7 @@ type Database interface {
 	Close()
 
 	// executes every sql query in order to create the database structure
-	DoMigrations()
+	Migrate()
 
 	// returns the pathname
 	GetPath() string

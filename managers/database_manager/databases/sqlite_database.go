@@ -22,7 +22,7 @@ func (db *Sqlite) Close() {
 	db.conn.Close()
 }
 
-func (db *Sqlite) DoMigrations() {
+func (db *Sqlite) Migrate() {
 	db.conn.Exec(`CREATE TABLE IF NOT EXISTS users (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		name TEXT,

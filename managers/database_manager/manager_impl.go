@@ -17,7 +17,7 @@ func Init(path string) uint {
 		return error.DATABASE_INITIALIZATION
 	}
 
-	db.DoMigrations()
+	db.Migrate()
 	db.Close()
 
 	Log.Info("initialized correctly at %s", db.GetPath())
