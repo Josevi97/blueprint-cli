@@ -11,3 +11,9 @@ func IsError(err uint) bool {
 func Throw(v any) {
 	panic(v)
 }
+
+func AssertError(err uint) {
+	if IsError(err) {
+		Throw(err)
+	}
+}

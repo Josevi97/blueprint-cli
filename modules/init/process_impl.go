@@ -17,20 +17,15 @@ var Log = logging.NewLogging("INIT PROCESS")
 
 func (init *InitProcess) fileSystem() {
 	path, err := FileSystemManager.Init(CommandUtils.Pwd())
-
-	if ErrorUtils.IsError(err) {
-		ErrorUtils.Throw(err)
-	}
-
 	init.pathname = path
+
+	ErrorUtils.AssertError(err)
 }
 
 func (init *InitProcess) database() {
 	err := DatabaseManager.Init(init.pathname)
 
-	if ErrorUtils.IsError(err) {
-		ErrorUtils.Throw(err)
-	}
+	ErrorUtils.AssertError(err)
 }
 
 func (init *InitProcess) Execute() {
