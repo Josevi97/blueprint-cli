@@ -9,11 +9,11 @@ import (
 var Log = logging.NewLogging("DATABASE MANAGER")
 
 func Init(path string) uint {
-	Log.Info("initializing at %s", path)
-
 	db := databases.DatabaseFactory(path)
 
-	if !db.Open(path) {
+	Log.Info("initializing at %s", path)
+
+	if !db.Open() {
 		return error.DATABASE_INITIALIZATION
 	}
 
