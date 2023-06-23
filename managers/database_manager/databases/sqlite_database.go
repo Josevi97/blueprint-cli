@@ -6,6 +6,36 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+const command = `
+	CREATE TABLE IF NOT EXISTS command (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		path TEXT,
+		dir TEXT,
+		command TEXT
+	)
+`
+
+const command2Command = `
+	CREATE TABLE IF NOT EXISTS command_to_command (
+		command_id INTEGER PRIMARY KEY,
+		command_id2 INTEGER PRIMARY KEY
+	)
+`
+
+const template = `
+	CREATE TABLE IF NOT EXISTS template (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		path TEXT
+	)
+`
+
+const command2Template = `
+	CREATE TABLE IF NOT EXISTS command_to_command (
+		command_id INTEGER PRIMARY KEY,
+		template_id INTEGER PRIMARY KEY
+	)
+`
+
 type Sqlite struct {
 	pathname string
 	conn     *sql.DB
@@ -23,11 +53,10 @@ func (db *Sqlite) Close() {
 }
 
 func (db *Sqlite) Migrate() {
-	db.conn.Exec(`CREATE TABLE IF NOT EXISTS users (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		name TEXT,
-		age INTEGER
-	)`)
+	db.conn.Exec(command)
+	db.conn.Exec(command2Command)
+	db.conn.Exec(template)
+	db.conn.Exec(command2Template)
 }
 
 func (db *Sqlite) GetPath() string {
