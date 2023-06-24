@@ -11,4 +11,3 @@ Basic command line interface to manage project structure
  5. At the end, this abstract interface repository communicates with the database interface, being reponsible to openning and closing the database connection
 
 ## TODO
-Should investigate about what kind of architecture about project structure is the best. Currently, the main approach is to have processes as modules and the rest of code is separated in utils, managers, handlers, etc. Another approach is to only have core and modules folders, and have everything as modules. Processes would be a module with its own folder structure.
