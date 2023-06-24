@@ -1,4 +1,4 @@
-package DatabaseManager
+package Database
 
 import (
 	databases "github.com/josevi97/core/database/factory"

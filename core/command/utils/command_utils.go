@@ -1,4 +1,4 @@
-package CommandUtils
+package Command
 
 import (
 	"os/exec"

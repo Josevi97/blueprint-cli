@@ -1,4 +1,4 @@
-package FileSystemManager
+package FileSystem
 
 import (
 	error "github.com/josevi97/core/error/models"

@@ -1,4 +1,4 @@
-package FileSystemUtils
+package FileSystem
 
 import (
 	"io/fs"

@@ -1,4 +1,4 @@
-package database
+package Database
 
 type Repository interface {
 	// SQL insert interace

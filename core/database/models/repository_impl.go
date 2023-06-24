@@ -1,4 +1,4 @@
-package database
+package Database
 
 type RepositoryImpl struct {
 	db        Database

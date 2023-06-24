@@ -1,4 +1,4 @@
-package ProcessManager
+package Processes
 
 import (
 	logging "github.com/josevi97/core/logging/models"

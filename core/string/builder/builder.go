@@ -1,4 +1,4 @@
-package StringBuilder
+package String
 
 type Builder interface {
 	// used to write some string in the current builder

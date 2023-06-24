@@ -1,4 +1,4 @@
-package error
+package Error
 
 type ErrorType uint
 

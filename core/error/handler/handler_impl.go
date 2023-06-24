@@ -1,4 +1,4 @@
-package ErrorHandler
+package Error
 
 import (
 	error "github.com/josevi97/core/error/models"

@@ -1,4 +1,4 @@
-package processes
+package Processes
 
 var (
 	INIT      = "init"

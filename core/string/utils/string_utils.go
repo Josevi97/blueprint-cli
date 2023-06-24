@@ -1,4 +1,4 @@
-package StringUtils
+package String
 
 import (
 	"strings"

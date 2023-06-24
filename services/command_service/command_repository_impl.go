@@ -1,4 +1,4 @@
-package services
+package Services
 
 import database "github.com/josevi97/core/database/models"
 

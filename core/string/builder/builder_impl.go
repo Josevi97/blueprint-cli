@@ -1,4 +1,4 @@
-package StringBuilder
+package String
 
 import "strings"
 

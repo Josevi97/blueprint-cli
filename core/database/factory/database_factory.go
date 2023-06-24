@@ -1,4 +1,4 @@
-package databases
+package Database
 
 import (
 	database "github.com/josevi97/core/database/models"
