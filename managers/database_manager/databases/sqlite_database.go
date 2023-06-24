@@ -2,8 +2,12 @@ package databases
 
 import (
 	"database/sql"
+	"strings"
 
 	_ "github.com/mattn/go-sqlite3"
+
+	DatabaseUtils "github.com/josevi97/utils/database"
+	StringUtils "github.com/josevi97/utils/string"
 )
 
 const command = `
@@ -61,6 +65,27 @@ func (db *Sqlite) Migrate() {
 
 func (db *Sqlite) GetPath() string {
 	return db.pathname
+}
+
+func (db *Sqlite) Create(table string, data map[string]string) {
+	keys, values := StringUtils.GetDataFromMap(data)
+	array := StringUtils.Map(values, "?")
+
+	var builder strings.Builder
+
+	// TODO: find a way to make a function chain
+	builder.WriteString("INSERT INTO ")
+	builder.WriteString(table + " ")
+	builder.WriteString(DatabaseUtils.ArrayInBrackets(keys) + " ")
+	builder.WriteString("VALUES ")
+	builder.WriteString(DatabaseUtils.ArrayInBrackets(array))
+
+	query := builder.String()
+
+	Log.Info("query to create a new instance: " + query)
+
+	stm, _ := db.conn.Prepare(query)
+	stm.Exec(values)
 }
 
 func NewSqlite(pathname string) *Sqlite {
