@@ -2,12 +2,13 @@ package databases
 
 import (
 	"database/sql"
-	"strings"
 
 	_ "github.com/mattn/go-sqlite3"
 
 	DatabaseUtils "github.com/josevi97/utils/database"
 	StringUtils "github.com/josevi97/utils/string"
+
+	StringBuilder "github.com/josevi97/core/builder/string_builder"
 )
 
 const command = `
@@ -69,18 +70,13 @@ func (db *Sqlite) GetPath() string {
 
 func (db *Sqlite) Create(table string, data map[string]string) {
 	keys, values := StringUtils.GetDataFromMap(data)
-	array := StringUtils.Map(values, "?")
-
-	var builder strings.Builder
-
-	// TODO: find a way to make a function chain
-	builder.WriteString("INSERT INTO ")
-	builder.WriteString(table + " ")
-	builder.WriteString(DatabaseUtils.ArrayInBrackets(keys) + " ")
-	builder.WriteString("VALUES ")
-	builder.WriteString(DatabaseUtils.ArrayInBrackets(array))
-
-	query := builder.String()
+	query := StringBuilder.NewBuilder().
+		Write("INSERT INTO ").
+		Write(table + " ").
+		Write(DatabaseUtils.ArrayInBrackets(keys) + " ").
+		Write("VALUES ").
+		Write(DatabaseUtils.ArrayInBrackets(StringUtils.Map(values, "?"))).
+		Build()
 
 	Log.Info("query to create a new instance: " + query)
 

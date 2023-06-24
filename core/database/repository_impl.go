@@ -5,6 +5,7 @@ type RepositoryImpl struct {
 	tablename string
 }
 
+// TODO: should check this behaviour, it may be a problem
 func (repository *RepositoryImpl) whileConnection(callback func()) {
 	repository.db.Open()
 	callback()

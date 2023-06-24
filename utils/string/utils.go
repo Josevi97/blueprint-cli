@@ -1,6 +1,8 @@
 package StringUtils
 
-import "strings"
+import (
+	"strings"
+)
 
 func Join(array []string, join string) string {
 	return strings.Join(array, join)
