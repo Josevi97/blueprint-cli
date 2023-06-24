@@ -3,11 +3,12 @@ package FileSystemUtils
 import (
 	"io/fs"
 	"os"
-	"strings"
+
+	StringUtils "github.com/josevi97/utils/string"
 )
 
 func Join(data ...string) string {
-	return strings.Join(data, "/")
+	return StringUtils.Join(data, "/")
 }
 
 func Exists(name string, path string) bool {
