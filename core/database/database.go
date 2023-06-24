@@ -15,13 +15,13 @@ type Database interface {
 
 	// SQL Queries
 
-	Create(table string, data map[string]string)
-
-	// Update()
-
 	// Get()
 
 	// GetAll()
+
+	Create(table string, data map[string]string)
+
+	// Update()
 
 	// Delete()
 }

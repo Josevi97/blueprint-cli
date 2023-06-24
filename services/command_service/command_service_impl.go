@@ -6,7 +6,7 @@ type CommandServiceImpl struct {
 	repository commandRepository
 }
 
-func NewCommandService(db *database.Database) CommandService {
+func NewCommandService(db database.Database) CommandService {
 	repository := newCommandRepository(db)
 
 	return &CommandServiceImpl{
