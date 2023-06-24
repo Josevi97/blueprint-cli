@@ -4,6 +4,7 @@ import (
 	"github.com/josevi97/core/error"
 	"github.com/josevi97/core/logging"
 
+	CommandUtils "github.com/josevi97/utils/command"
 	ErrorUtils "github.com/josevi97/utils/error"
 	FileSystemUtils "github.com/josevi97/utils/file_system"
 )
@@ -28,4 +29,12 @@ func Init(path string) string {
 	Log.Info("initialized correctly at \"%s\"", execPath)
 
 	return execPath
+}
+
+func GetCurrentPath() string {
+	return FileSystemUtils.Join(CommandUtils.Pwd(), DIRECTORY_NAME)
+}
+
+func IsInitialized() bool {
+	return FileSystemUtils.Exists(DIRECTORY_NAME, CommandUtils.Pwd())
 }

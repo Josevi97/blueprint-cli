@@ -9,6 +9,10 @@ type HelpProcess struct{}
 
 var Log = logging.NewLogging("HELP PROCESS")
 
+func (helpProcess *HelpProcess) RequiresToBeInitialized() bool {
+	return false
+}
+
 func args(command string, msg string) {
 	Log.Output("%s\t\t%s\n", command, msg)
 }

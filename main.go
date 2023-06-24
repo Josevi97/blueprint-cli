@@ -5,12 +5,12 @@ import (
 
 	ErrorHandler "github.com/josevi97/handlers/error_handler"
 	ProcessManager "github.com/josevi97/managers/process_manager"
-	ArrayUtils "github.com/josevi97/utils/array"
+	StringUtils "github.com/josevi97/utils/string"
 )
 
 func main() {
-	args := ArrayUtils.SublistFrom(os.Args, 1)
+	args := StringUtils.SublistFrom(os.Args, 1)
 	process := ProcessManager.FromArgs(args)
 
-	ErrorHandler.Handle(process.Execute)
+	ErrorHandler.Handle(process)
 }

@@ -14,6 +14,10 @@ type InitProcess struct {
 
 var Log = logging.NewLogging("INIT PROCESS")
 
+func (initProcess *InitProcess) RequiresToBeInitialized() bool {
+	return false
+}
+
 func (init *InitProcess) fileSystem() {
 	path := FileSystemManager.Init(CommandUtils.Pwd())
 	init.pathname = path

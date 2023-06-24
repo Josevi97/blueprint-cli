@@ -10,6 +10,8 @@ var (
 )
 
 type Process interface {
+	RequiresToBeInitialized() bool
+
 	// Every CLI process must include execute as the only one entrypoint
 	Execute()
 }

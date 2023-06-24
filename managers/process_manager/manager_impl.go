@@ -1,19 +1,18 @@
 package ProcessManager
 
 import (
-	"strings"
-
 	"github.com/josevi97/core/logging"
 	"github.com/josevi97/core/process"
 	HelpProcess "github.com/josevi97/modules/help"
 	InitProcess "github.com/josevi97/modules/init"
-	ArrayUtils "github.com/josevi97/utils/array"
+	RegisterProcess "github.com/josevi97/modules/register"
+	StringUtils "github.com/josevi97/utils/string"
 )
 
 var Log = logging.NewLogging("PROCESS MANAGER")
 
 func getProcesses(args []string) map[string]func() process.Process {
-	processArgs := ArrayUtils.SublistFrom(args, 1)
+	processArgs := StringUtils.SublistFrom(args, 1)
 
 	return map[string]func() process.Process{
 		process.INIT: func() process.Process {
@@ -21,6 +20,9 @@ func getProcesses(args []string) map[string]func() process.Process {
 		},
 		process.HELP: func() process.Process {
 			return HelpProcess.NewHelpProcess()
+		},
+		process.REGISTER: func() process.Process {
+			return RegisterProcess.NewRegisterProcess()
 		},
 	}
 }
@@ -41,7 +43,7 @@ func getProcessFromArgs(args []string) process.Process {
 }
 
 func FromArgs(args []string) process.Process {
-	Log.Info("Executing process with [%s] arguments", strings.Join(args, ", "))
+	Log.Info("Executing process with [%s] arguments", StringUtils.Join(args, ", "))
 
 	return getProcessFromArgs(args)
 }
