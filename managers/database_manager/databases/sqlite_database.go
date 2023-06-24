@@ -8,7 +8,7 @@ import (
 	DatabaseUtils "github.com/josevi97/utils/database"
 	StringUtils "github.com/josevi97/utils/string"
 
-	StringBuilder "github.com/josevi97/core/builder/string_builder"
+	StringBuilder "github.com/josevi97/builders/string_builder"
 )
 
 const command = `
