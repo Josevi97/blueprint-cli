@@ -12,4 +12,16 @@ type Database interface {
 
 	// returns the pathname
 	GetPath() string
+
+	// SQL Queries
+
+	Create(table string, data map[string]string)
+
+	// Update()
+
+	// Get()
+
+	// GetAll()
+
+	// Delete()
 }
