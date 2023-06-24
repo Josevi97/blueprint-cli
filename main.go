@@ -3,9 +3,9 @@ package main
 import (
 	"os"
 
-	ErrorHandler "github.com/josevi97/handlers/error_handler"
-	ProcessManager "github.com/josevi97/managers/process_manager"
-	StringUtils "github.com/josevi97/utils/string"
+	ErrorHandler "github.com/josevi97/core/error/handler"
+	StringUtils "github.com/josevi97/core/string/utils"
+	ProcessManager "github.com/josevi97/processes/manager"
 )
 
 func main() {

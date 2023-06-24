@@ -1,6 +1,6 @@
 package services
 
-import "github.com/josevi97/core/database"
+import database "github.com/josevi97/core/database/models"
 
 type CommandServiceImpl struct {
 	repository commandRepository
