@@ -1,0 +1,39 @@
+package file_system_utils
+
+import (
+	"io/fs"
+	"os"
+
+	"github.com/josevi97/core/string/string_utils"
+)
+
+func Join(data ...string) string {
+	return string_utils.Join(data, "/")
+}
+
+func Exists(name string, path string) bool {
+	_, err := os.Stat(Join(path, name))
+
+	if err == nil {
+		return true
+	}
+
+	if os.IsExist(err) {
+		return true
+	}
+
+	// This may be an error anyways. This should be refactored to use error status
+	// or panic it
+	return false
+}
+
+func CreateDirectory(name string, path string) bool {
+	directoryName := Join(path, name)
+	err := os.Mkdir(directoryName, fs.ModePerm)
+
+	if err != nil {
+		return false
+	}
+
+	return true
+}

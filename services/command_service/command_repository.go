@@ -1,3 +1,3 @@
-package Services
+package command_service
 
-type commandRepository interface{}
+type CommandRepository interface{}

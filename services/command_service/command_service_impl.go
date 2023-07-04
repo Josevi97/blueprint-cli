@@ -1,9 +1,9 @@
-package Services
+package command_service
 
-import database "github.com/josevi97/core/database/models"
+import "github.com/josevi97/core/database"
 
 type CommandServiceImpl struct {
-	repository commandRepository
+	repository CommandRepository
 }
 
 func NewCommandService(db database.Database) CommandService {

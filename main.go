@@ -3,14 +3,14 @@ package main
 import (
 	"os"
 
-	ErrorHandler "github.com/josevi97/core/error/handler"
-	StringUtils "github.com/josevi97/core/string/utils"
-	ProcessManager "github.com/josevi97/processes/manager"
+	"github.com/josevi97/core/err/error_handler"
+	"github.com/josevi97/core/string/string_utils"
+	"github.com/josevi97/processes/process_manager"
 )
 
 func main() {
-	args := StringUtils.SublistFrom(os.Args, 1)
-	process := ProcessManager.FromArgs(args)
+	args := string_utils.SublistFrom(os.Args, 1)
+	process := process_manager.FromArgs(args)
 
-	ErrorHandler.Handle(process)
+	error_handler.Handle(process)
 }
